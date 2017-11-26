@@ -9,13 +9,20 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: arial
 }
 
 a {
     color: black;
 }
 
-
+#body_div{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: arial
+}
 /*头部*/
 
 #Header {}
@@ -27,7 +34,6 @@ a {
     margin: 0;
 }
 
-.container-fluid {}
 
 #Logo {
     padding: 7px;
@@ -35,11 +41,11 @@ a {
 }
 
 .nav-menu {
-    width: 680px;
+    width: 750px;
     height: auto;
     position: absolute;
     left: 50%;
-    margin-left: -340px;
+    margin-left: -375px;
 }
 
 .nav-menu-ul {
@@ -75,8 +81,8 @@ a {
 .menu-li {
     height: 100%;
     float: left;
-    padding-left:15px;
-    padding-right: 15px; 
+    padding-left:25px;
+    padding-right: 25px; 
     height: 51px;
 /*    border-right: 1px solid white;
     border-left: 1px solid white;*/
@@ -91,7 +97,7 @@ a {
 
 }
 .account {
-    width: 120px;
+    width: 150px;
     right: 0;
     position: absolute;
     height: 52px;
@@ -178,7 +184,7 @@ a {
 
 .li_actived {
     background: #efefef;
-    border-right: 2px solid #FAAB21
+    border-right: 4px solid #FAAB21
 }
 
 .li_actived>a {
@@ -191,11 +197,14 @@ a {
 .Container-content {
     flex: 1;
     padding-left: 40px;
+    padding-right: 40px
 }
 
 .title{
     padding-top: 20px;
-    height: 50px;
+    height: 60px;
+    border-bottom: 1px solid #e5e5e5;
+
 }
 
 .title_box{
@@ -213,5 +222,215 @@ a {
 
 .date_box{
     position: absolute;
-    right: 30px;
+    right: 50px;
+    width: 230px;
+    margin-top: -5px;
 }
+
+.Container-content-box{
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+.Container-content-box-title{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+.Container-content-box-title>p{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    color: rgb(157,131,62);
+}
+
+.q-mark{
+    margin-left: 10px;
+}
+
+.q-mark>img{
+    margin-top: -3px;
+}
+
+
+/*Buzz_Trend*/
+
+#Buzz_Trend{
+    height: 600px;
+}
+
+.btn1{
+    background: rgb(157,131,62);
+    width: 120px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    float: right;
+    margin-top: 7px;
+    margin-right: 10px;
+    border-radius: 10px
+}
+
+.remark{
+    background: #fef9ed;
+    position: absolute;
+    z-index: 10000;
+    width: 500px;
+    height: 65px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #e5e5e5;
+    margin-top: 50px;
+    margin-left: 85px; 
+    display: none;
+}
+
+.remark>p{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.Buzz_Trend_slide{
+    width: 100%;
+    height: 85px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.Buzz_Trend_slide_brand{
+    width: 280px;
+    height: 100%;
+    border-right: 1px solid #e5e5e5;
+
+}
+.Buzz_Trend_slide_brand>img{
+    float: left;
+}
+.slide_box{
+    width: 150px;
+    height: 100%;
+    float: left;
+    margin-top: 5px;
+    margin-left: -10px;
+}
+
+.slide_box_name{
+    color: grey;
+    font-size: 14px;
+     margin: 0;
+}
+
+.slide_box_num{
+    margin: 0;
+    color: #666666;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: -5px;
+}
+
+.Buzz_Trend_slide_ul{
+    height: 100%;
+    flex: 1;
+}
+
+.Buzz_Trend_slide_ul>ul{
+    list-style: none;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    /*margin-left: 30px;*/
+}
+.Buzz_Trend_slide_ul>ul>li{
+    float: left;
+    flex: 1;
+    text-align: center;
+}
+
+.Buzz_Trend_slide_per{
+ /*   position: absolute;*/
+    margin:0; 
+    /*left: 550px;*/
+    width: 30px;
+    height: 65px;
+    line-height: 65px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(157,131,62);
+    text-align: center;
+    display: none;
+}
+.Buzz_Trend_slide_next{
+    /*position: absolute;*/
+    margin:0; 
+    /*right: 40px;*/
+    width: 30px;
+    height: 65px;
+    line-height: 65px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(157,131,62);
+}
+
+.Buzz_Trend_content{
+    height: 465px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.Buzz_Trend_content_title{
+    height: 50px;
+    width: 100%;
+
+}
+
+.Buzz_Trend_content_title>p{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    margin:0;
+    color: grey;
+    font-weight: bold;
+}
+
+.Buzz_Trend_content_title>ul{
+    float: right;
+    list-style: none;
+}
+.Buzz_Trend_content_title>ul>li{
+    float: left;
+    width: 70px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.Buzz_Trend_li_actived{
+    color: rgb(157,131,62);
+}
+
+#Buzz_Trend_chart{
+    width: 100%;
+    height: 390px;
+    margin-bottom: 20px;
+
+}
+
+
+/*Media_Channel*/
+
+#Media_Channel{
+    height: 500px
+}
+

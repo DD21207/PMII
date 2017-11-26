@@ -5,93 +5,161 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="PMI">
     <meta name="author" content="Dand">
-    <title>Index</title>
+    <title>Brand pulse</title>
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/css/daterangepicker.css" rel="external nofollow" />
     <link rel="stylesheet" href="../css/Index.css">
-    <script src="../lib/js/jquery-3.2.1.min.js"></script>
-    <script src="../lib/js/bootstrap.min.js"></script>
-    <script src="../lib/js/moment.min.js"></script>
-    <script src="../lib/js/jquery.daterangepicker.js"></script>
-    <script src="../js/Index.js"></script>
 </head>
 
 <body>
-    <!-- Header -->
-    <div id="Header">
-        <nav class="navbar">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#" id="Logo">
-			        	<img alt="logo" src="../img/logo_u9.png" height="100%">
-			      	</a>
+    <div id="body_div">
+        <!-- Header -->
+        <div id="Header">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#" id="Logo">
+                        <img alt="Brand pulse" src="../img/logo_u9.png" height="100%">
+                    </a>
+                    </div>
+                    <div class="nav-menu">
+                        <ul class="nav-menu-ul">
+                            <li class="menu-li">
+                                <a href="#" class="nav-menu-li-a">
+                                Hot Radar
+                            </a>
+                            </li>
+                            <li class="menu-li actived">
+                                <a href="#" class="nav-menu-li-a">
+                                Brand Monitor
+                            </a>
+                            </li>
+                            <li class="menu-li">
+                                <a href="#" class="nav-menu-li-a">
+                                Marketing Center
+                            </a>
+                            </li>
+                            <li class="menu-li">
+                                <a href="#" class="nav-menu-li-a">
+                                Celebrity & KOL
+                            </a>
+                            </li>
+                            <li class="menu-li">
+                                <a href="#" class="nav-menu-li-a">
+                                Report
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="account">
+                        <ul class="account-nav">
+                            <li><img src="../img/2.png" alt="" height="65%"></li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Hi,Dand<b class="caret"></b>
+                            </a>
+                                <ul class="dropdown-menu" style="margin-left: -20px;margin-top: -1px;">
+                                    <li><a href="#">Usercenter</a></li>
+                                    <li><a href="#">logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="nav-menu">
-                    <ul class="nav-menu-ul">
-                        <li class="menu-li">
-                            <a href="#" class="nav-menu-li-a">
-			                    Hot Radar
-			                </a>
-                        </li>
-                        <li class="menu-li actived">
-                            <a href="#" class="nav-menu-li-a">
-			                    Brand Monitor
-			                </a>
-                        </li>
-                        <li class="menu-li">
-                            <a href="#" class="nav-menu-li-a">
-			                    Marketing Center
-			                </a>
-                        </li>
-                        <li class="menu-li">
-                            <a href="#" class="nav-menu-li-a">
-			                    Celebrity & KOL
-			                </a>
-                        </li>
-                        <li class="menu-li">
-                            <a href="#" class="nav-menu-li-a">
-			                    Report
-			                </a>
-                        </li>
-                    </ul>
+            </nav>
+        </div>
+        <!-- container -->
+        <div id="Container">
+            <div class="sidebar">
+                <ul class="sidebar-nav">
+                    <li class="li_actived"><a href="#" class="a1">上汽通用</a></li>
+                    <li><a href="#" class="a1">category</a></li>
+                </ul>
+            </div>
+            <div class="Container-content">
+                <div class="Container-content-header">
+                    <div class="title">
+                        <div class="title_box">
+                            Brand Monitor——#上汽通用# <span class="title_span">(Data updated in 2017-09-30)</span>
+                        </div>
+                        <div class="date_box form-group has-feedback">
+                            <span class="glyphicon glyphicon-calendar form-control-feedback" style="left: 0"></span>
+                            <input type="text" class="form-control" value="2017-05-01 to 2017-05-31" id="datepicker" style="padding-left: 40px;padding-right: 5px;font-size: 14px;padding-top: 2px;padding-bottom: 2px">
+                        </div>
+                    </div>
                 </div>
-                <div class="account">
-                    <ul class="account-nav">
-                        <li><img src="../img/2.png" alt="" height="65%"></li>
-                        <li>
-                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                    Java <b class="caret"></b>
-		                	</a>
-                            <ul class="dropdown-menu" style="margin-left: -20px;margin-top: -1px;">
-                                <li><a href="#">Usercenter</a></li>
-                                <li><a href="#">logout</a></li>
+                <div class="Container-content-box" id="Buzz_Trend">
+                    <div class="Container-content-box-title">
+                        <p>Buzz Trend</p>
+                        <p id="Buzz_Trend_mark" class="q-mark"><img src="../img/mark.png" alt=""></p>
+                        <div class="remark">
+                            <p><span>Buzz Trend：</span></p>
+                            <p><span>Indicate the trend of brand related content quantity.</span></p>
+                        </div>
+                        <button class="btn btn1">Report</button>
+                    </div>
+                    <div class="Buzz_Trend_slide">
+                        <div class="Buzz_Trend_slide_brand">
+                            <img src="../img/SGM.jpg" alt="" height="100%">
+                            <div class="slide_box">
+                                <p class="slide_box_name">{{brandName}}</p>
+                                <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                            </div>
+                        </div>
+                        <p class="Buzz_Trend_slide_per" v-on:click="perBuzz()">
+                            < </p>
+                                <div class="Buzz_Trend_slide_ul" id="Buzz_Trend_slide_ul">
+                                    <ul>
+                                        <li v-for="item in filteredItems">
+                                            <div class="slide_box">
+                                                <p class="slide_box_name">{{item.Name}}</p>
+                                                <p class="slide_box_num">{{item.Value|formatNum}}</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="Buzz_Trend_slide_next" v-on:click="nextBuzz()">
+                                    >
+                                </p>
+                    </div>
+                    <div class="Buzz_Trend_content">
+                        <div class="Buzz_Trend_content_title">
+                            <p>Buzz Trend Analysis</p>
+                            <ul>
+                                <li class="Buzz_Trend_li_actived">By Day</li>
+                                <li>By Week</li>
+                                <li>By Month</li>
                             </ul>
-                        </li>
-                    </ul>
+                        </div>
+                        <div class="Buzz_Trend_content_chart_box" id="Buzz_Trend_chart">
+                        </div>
+                    </div>
+                </div>
+                <div class="Container-content-box" id="Media_Channel">
+                    <div class="Container-content-box-title">
+                        <p>Media_Channel</p>
+                        <p id="Media_Channel_mark" class="q-mark"><img src="../img/mark.png" alt=""></p>
+                        <div class="remark">
+                            <p><span>Media Channel:</span></p>
+                            <p><span>Indicate brands related media channel when broadcasting.</span></p>
+                        </div>
+                        <button class="btn btn1">Report</button>
+                    </div>
+                    <div class="Buzz_Trend_content">
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </div>
-    <!-- container -->
-    <div id="Container">
-    	<div class="sidebar">
-    		<ul class="sidebar-nav">
-    			<li class="li_actived"><a href="#" class="a1">上汽通用</a></li>
-                <li ><a href="#" class="a1">category</a></li>
-    		</ul>
-    	</div>
-    	<div class="Container-content">
-    		<div class="Container-content-header">
-                <div class="title">
-    			<div class="title_box">
-    				Brand Monitor--#上汽通用# <span class="title_span">(Data updated in 2017-09-30)</span>
-
-    			</div>
-                 <div class="date_box"><input type="text" id="datepicker" value="2017-05-01 to 2017-05-31"></div>
-                </div>
-    		</div>
-    	</div>
-    </div>
+    <script src="../lib/js/jquery-3.2.1.min.js"></script>
+    <script src="../lib/js/bootstrap.min.js"></script>
+    <script src="../lib/js/vue.min.js"></script>
+    <script src="../lib/js/vue-resource.min.js"></script>
+    <script src="../lib/js/echarts.js"></script>
+    <script src="../lib/js/moment.min.js"></script>
+    <script src="../lib/js/jquery.daterangepicker.js"></script>
+    <script src="../js/chart.js"></script>
+    <script src="../js/Index.js"></script>
 </body>
 
 </html>
