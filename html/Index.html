@@ -7,6 +7,7 @@
     <meta name="author" content="Dand">
     <title>Brand pulse</title>
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/css/cloud.css">
     <link rel="stylesheet" href="../lib/css/daterangepicker.css" rel="external nofollow" />
     <link rel="stylesheet" href="../css/Index.css">
 </head>
@@ -71,10 +72,7 @@
         <!-- container -->
         <div id="Container">
             <div class="sidebar">
-                <ul class="sidebar-nav">
-                    <li class="li_actived"><a href="#" class="a1">上汽通用</a></li>
-                    <li><a href="#" class="a1">category</a></li>
-                </ul>
+                <img src="../img/side.png" alt="" width="100%">
             </div>
             <div class="Container-content">
                 <div class="Container-content-header">
@@ -137,7 +135,7 @@
                 </div>
                 <div class="Container-content-box" id="Media_Channel">
                     <div class="Container-content-box-title">
-                        <p>Media_Channel</p>
+                        <p>Media Channel</p>
                         <p id="Media_Channel_mark" class="q-mark"><img src="../img/mark.png" alt=""></p>
                         <div class="remark">
                             <p><span>Media Channel:</span></p>
@@ -145,7 +143,458 @@
                         </div>
                         <button class="btn btn1">Report</button>
                     </div>
-                    <div class="Buzz_Trend_content">
+                    <div class="Media_Channel_content">
+                        <div id="Media_Channel_chart_box" class="box">
+                            <div class="box_title">
+                                Media Distribution
+                            </div>
+                            <div id="Media_Channel_chart">
+                            </div>
+                        </div>
+                        <div class="box" id="Channel_table_box">
+                            <div class="box_title">
+                                Channel Rank
+                            </div>
+                            <div id="Channel_table" class="table_box">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Channel</th>
+                                            <th colspan="2">Buzz</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="tableItem in tablesData">
+                                            <td style="width: 15px">{{tableItem.Rank}}</td>
+                                            <td style="width: 82px">{{tableItem.Name}}</td>
+                                            <td style="width: 10px">{{tableItem.Value}}</td>
+                                            <td>
+                                                <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="box" id="Active_table_box">
+                            <div class="box_title">
+                                Active Media
+                            </div>
+                            <div id="Active_table" class="table_box">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Channel</th>
+                                            <th colspan="2">Buzz</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="tableItem in tablesData">
+                                            <td style="width: 10px">{{tableItem.Rank}}</td>
+                                            <td style="width: 82px">{{tableItem.Name}}</td>
+                                            <td style="width: 10px">{{tableItem.Value}}</td>
+                                            <td>
+                                                <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Container-content-box" id="Media_Sentiment">
+                    <div class="Container-content-box-title">
+                        <p>Media Sentiment</p>
+                        <p id="Media_Sentiment_mark" class="q-mark"><img src="../img/mark.png" alt=""></p>
+                        <div class="remark" style="height: 75px;">
+                            <p><span>Media Channel:</span></p>
+                            <p><span>Indicate the sentiment of media when broadcasting brands related <br>content and the sentiment contains positive / Netural / Negative.</span></p>
+                        </div>
+                        <button class="btn btn1">Report</button>
+                    </div>
+                    <div class="Media_Sentiment_content">
+                        <div id="Media_Sentiment_chart_box" class="box">
+                            <div class="box_title">
+                                <p style="position: absolute;">Sentiment Index</p>
+                                <div class="select_box">
+                                    <select class="form-control">
+                                        <option>上汽通用</option>
+                                        <option>上汽通用</option>
+                                        <option>上汽通用</option>
+                                        <option>上汽通用</option>
+                                        <option>上汽通用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="Sentiment_box">
+                                <div class="Sentiment_box1">
+                                    <div class="Sentiment_Index1">
+                                        <img src="../img/SGM.jpg" alt="" width="50%">
+                                        <div class="slide_box" style="width: 100px;">
+                                            <p class="slide_box_name">{{brandName}}</p>
+                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Sentiment_box2">
+                                    <div>
+                                        <div class="border_box" style="background-color: #6ab0b8">
+                                        </div>
+                                        <div class="slide_box" style="width: 100px;">
+                                            <p class="slide_box_name">{{brandName}}</p>
+                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 15px;">
+                                        <div class="border_box" style="background-color: #2f4554">
+                                        </div>
+                                        <div class="slide_box" style="width: 100px;">
+                                            <p class="slide_box_name">{{brandName}}</p>
+                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 15px;">
+                                        <div class="border_box" style="background-color: #c23531">
+                                        </div>
+                                        <div class="slide_box" style="width: 100px;">
+                                            <p class="slide_box_name">{{brandName}}</p>
+                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="Media_Sentiment_chart" class="Sentiment_box3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box" id="Sentiment_table_box">
+                            <div class="box_title">
+                                Sentiment Rank
+                            </div>
+                            <div id="Channel_table" class="table_box">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Brand</th>
+                                            <th colspan="2">Sentiment Index</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="tableItem in tablesData">
+                                            <td style="width: 20px">{{tableItem.Rank}}</td>
+                                            <td style="width: 90px">{{tableItem.Name}}</td>
+                                            <td style="width: 20px">{{tableItem.Value}}</td>
+                                            <td>
+                                                <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="Sentiment_Trend_chart_box" class="box">
+                            <div class="box_title">
+                                <p style="position: absolute;">Sentiment Trend</p>
+                            </div>
+                            <div class="Sentiment_Trend_chart1">
+                                <div class="Buzz_Trend_content_title">
+                                    <p>Sentiment Index</p>
+                                    <ul>
+                                        <li class="Buzz_Trend_li_actived">By Day</li>
+                                        <li>By Week</li>
+                                        <li>By Month</li>
+                                    </ul>
+                                </div>
+                                <div id="Sentiment_Trend_chart">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Container-content-box" id="Brand_Content">
+                    <div class="Container-content-box-title" style="position: relative;">
+                        <p>Brand Content</p>
+                        <p id="Brand_Content_mark" class="q-mark"><img src="../img/mark.png" alt=""></p>
+                        <div class="remark" style="height: 120px;">
+                            <p><span>Brand Content:</span></p>
+                            <p><span>Base on the tech of NLP, indicates the content when audience discuss brands, what word they offen use, what they often refer; and based on the brand-product analysis model, indicates what point audience mainly concerns and the trend of concern point.</span></p>
+                        </div>
+                        <div class="filter_box">
+                            <button class="btn btn-default">ALL</button>
+                            <button class="btn btn-default btn_actived">Positive</button>
+                            <button class="btn btn-default">Nagetive</button>
+                        </div>
+                        <div class="select_box">
+                            <select class="form-control">
+                                <option>上汽通用</option>
+                                <option>上汽通用</option>
+                                <option>上汽通用</option>
+                                <option>上汽通用</option>
+                                <option>上汽通用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="Brand_Content_content">
+                        <div id="Hot_Words_box" class="box">
+                            <div class="box_title" style="font-size: 14px;height: 40px;line-height: 40px;">
+                                Hot Words #上汽通用#
+                            </div>
+                            <div id="Hot_Words_chart_content">
+                                <div id="Hot_Words_chart_box" class="box">
+                                </div>
+                                <div class="box" id="Hot_Words_table_box">
+                                    <div id="Hot_Words_table" class="table_box">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="4">Hot Words Top10</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="tableItem in tablesData">
+                                                    <td style="width: 20px">{{tableItem.Rank}}</td>
+                                                    <td style="width: 90px">{{tableItem.Name}}</td>
+                                                    <td style="width: 20px">{{tableItem.Value}}</td>
+                                                    <td>
+                                                        <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                            <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Content_Reference_box" class="box">
+                            <div class="box_title">
+                                Content Reference #上汽通用#
+                            </div>
+                            <div id="Content_Reference_chart_content">
+                                <div class="box" id="Brand_Reference_table_box">
+                                    <div class="box_title" style="font-size: 14px;height: 40px;line-height: 40px;">
+                                        Brand Reference
+                                    </div>
+                                    <div id="Brand_Reference" class="table_box" style="padding: 2px 10px;">
+                                        <table class="table" style="margin-bottom: 5px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Brand</th>
+                                                    <th colspan="2">Frequency</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="tableItem in tablesData">
+                                                    <td style="width: 10px">{{tableItem.Rank}}</td>
+                                                    <td style="width: 82px">{{tableItem.Name}}</td>
+                                                    <td style="width: 10px">{{tableItem.Value}}</td>
+                                                    <td>
+                                                        <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                            <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="more">Learn more>></p>
+                                    </div>
+                                </div>
+                                <div class="box" id="Product_Reference_table_box">
+                                    <div class="box_title" style="font-size: 14px;height: 40px;line-height: 40px;">
+                                        Product Reference
+                                    </div>
+                                    <div id="Product_Reference" class="table_box" style="padding: 2px 10px;">
+                                        <table class="table" style="margin-bottom: 5px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Product</th>
+                                                    <th colspan="2">Frequency</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="tableItem in tablesData">
+                                                    <td style="width: 10px">{{tableItem.Rank}}</td>
+                                                    <td style="width: 82px">{{tableItem.Name}}</td>
+                                                    <td style="width: 10px">{{tableItem.Value}}</td>
+                                                    <td>
+                                                        <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                            <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="more">Learn more>></p>
+                                    </div>
+                                </div>
+                                <div class="box" id="KOL_Reference_table_box">
+                                    <div class="box_title" style="font-size: 14px;height: 40px;line-height: 40px;">
+                                        KOL & Celebrity Reference
+                                    </div>
+                                    <div id="KOL_Reference" class="table_box" style="padding: 2px 10px;">
+                                        <table class="table" style="margin-bottom: 5px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>KOL & Cel</th>
+                                                    <th colspan="2">Frequency</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="tableItem in tablesData">
+                                                    <td style="width: 10px">{{tableItem.Rank}}</td>
+                                                    <td style="width: 82px">{{tableItem.Name}}</td>
+                                                    <td style="width: 10px">{{tableItem.Value}}</td>
+                                                    <td>
+                                                        <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                            <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="more">Learn more>></p>
+                                    </div>
+                                </div>
+                                <div class="box" id="Marketing_Reference_table_box">
+                                    <div class="box_title" style="font-size: 14px;height: 40px;line-height: 40px;">
+                                        Marketing Events Reference
+                                    </div>
+                                    <div id="Marketing_Reference" class="table_box" style="padding: 2px 10px;">
+                                        <table class="table" style="margin-bottom: 5px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Marketing</th>
+                                                    <th colspan="2">Frequency</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="tableItem in tablesData">
+                                                    <td style="width: 10px">{{tableItem.Rank}}</td>
+                                                    <td style="width: 82px">{{tableItem.Name}}</td>
+                                                    <td style="width: 10px">{{tableItem.Value}}</td>
+                                                    <td>
+                                                        <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                            <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="more">Learn more>></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Product_box" class="box">
+                            <div class="box_title">
+                                Product Concerns #上汽通用#
+                            </div>
+                            <div id="Product_chart_content">
+                                <div id="Product_chart_box" class="box">
+                                    <div class="box_title">
+                                        Product Concerns Distribution
+                                    </div>
+                                    <div id="Product_chart">
+                                    </div>
+                                </div>
+                                <div class="box" id="Product_table_box">
+                                    <div class="box_title">
+                                        Concerns Top10
+                                        <div class="select_box">
+                                            <select class="form-control">
+                                                <option>上汽通用</option>
+                                                <option>上汽通用</option>
+                                                <option>上汽通用</option>
+                                                <option>上汽通用</option>
+                                                <option>上汽通用</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="Channel_table" class="table_box">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Concerns</th>
+                                                    <th colspan="2">Frequency</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="tableItem in tablesData">
+                                                    <td style="width: 15px">{{tableItem.Rank}}</td>
+                                                    <td style="width: 82px">{{tableItem.Name}}</td>
+                                                    <td style="width: 10px">{{tableItem.Value}}</td>
+                                                    <td>
+                                                        <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
+                                                            <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Product_Concerns_chart_box" class="box">
+                            <div class="box_title">
+                                <p style="position: absolute;">
+                                    Product Concerns Cross-Over Analysis
+                                </p>
+                            </div>
+                            <div class="Sentiment_Trend_chart1">
+                                <div class="Buzz_Trend_content_title" style="position: relative;">
+                                    <div class="select_box" style="left: 0;">
+                                        <select class="form-control">
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                        </select>
+                                    </div>
+                                    <div class="select_box" style="left:150px;">
+                                        <select class="form-control">
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                            <option>上汽通用</option>
+                                        </select>
+                                    </div>
+                                    <ul>
+                                        <li class="Buzz_Trend_li_actived">By Day</li>
+                                        <li>By Week</li>
+                                        <li>By Month</li>
+                                    </ul>
+                                </div>
+                                <div id="Product_Concerns_chart">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,6 +605,7 @@
     <script src="../lib/js/vue.min.js"></script>
     <script src="../lib/js/vue-resource.min.js"></script>
     <script src="../lib/js/echarts.js"></script>
+    <script src="../lib/js/cloud.js"></script>
     <script src="../lib/js/moment.min.js"></script>
     <script src="../lib/js/jquery.daterangepicker.js"></script>
     <script src="../js/chart.js"></script>

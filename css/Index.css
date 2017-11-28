@@ -193,6 +193,7 @@ a {
 
 
 /*内容*/
+/*内容头部*/
 
 .Container-content {
     flex: 1;
@@ -259,10 +260,37 @@ a {
 }
 
 
-/*Buzz_Trend*/
 
-#Buzz_Trend{
-    height: 600px;
+
+.box{
+    float: left;
+    height: 100%;
+    border:1px solid #e5e5e5;
+    border-radius: 5px;
+}
+.box_title{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 50px;
+    font-size: 14px;
+    margin:0;
+    color: grey;
+    font-weight: bold;
+    padding-left: 20px;
+    position: relative;
+}
+.table_box{
+    padding: 10px;
+}
+
+.table_box>table>thead>tr>th{
+    color: lightgrey;
+    font-size: 13px;
+}
+.table_box>table>tbody>tr>td{
+    
+    font-size: 13px;
 }
 
 .btn1{
@@ -297,6 +325,45 @@ a {
     font-size: 14px;
     font-weight: 300;
 }
+
+.select_box{
+    position: absolute;
+    width: 100px;
+    right: 20px;
+    top: 7px;
+}
+.select_box select{
+    font-size: 12px;
+}
+
+.more{
+    float: right;
+    color: rgb(157,131,62);
+}
+.filter_box{
+    margin-left: 300px;
+    width: 250px;
+    padding-top: 7px;
+}
+
+.filter_box>button{
+    margin-left: 10px;
+
+}
+
+.btn_actived{
+    border-color: rgb(157,131,62);
+    color: rgb(157,131,62);
+}
+
+
+/*Buzz_Trend*/
+
+#Buzz_Trend{
+    height: 600px;
+}
+
+
 
 .Buzz_Trend_slide{
     width: 100%;
@@ -431,6 +498,245 @@ a {
 /*Media_Channel*/
 
 #Media_Channel{
-    height: 500px
+    height: 570px
 }
 
+
+.Media_Channel_content{
+    height: 520px;
+    padding: 20px;
+}
+
+
+
+#Media_Channel_chart_box{
+    width: 48%;
+
+}
+
+#Channel_table_box{
+    width: 25%;margin-left: 1%;
+}
+
+#Active_table_box{
+    width: 25%;margin-left: 1%;
+}
+
+
+#Media_Channel_chart{
+    height: 410px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#Channel_table{
+    height: 430px;
+    width: 100%;
+}
+
+#Active_table{
+    height: 430px;
+    width: 100%;
+}
+
+/*Media_Sentiment*/
+
+#Media_Sentiment{
+    height: 900px
+}
+
+
+.Media_Sentiment_content{
+    height: 850px;
+    padding: 20px;
+}
+
+
+
+#Media_Sentiment_chart_box{
+    width: 70%;
+   height: 350px;
+
+}
+
+#Sentiment_table_box{
+    width: 29%;margin-left: 1%;
+   height: 350px;
+
+    
+}
+
+#Sentiment_Trend_chart_box{
+    width: 100%;
+   height:450px;
+    margin-top:10px 
+
+}
+.Sentiment_Trend_chart1{
+    width: 100%;
+    height: 400px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+            
+#Sentiment_Trend_chart{
+    width: 100%;
+    height: 340px;
+}
+.Sentiment_box{
+    height:300px;
+    width: 100%;
+    padding: 30px 15px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+.Sentiment_box1{
+    flex: 3;
+    border-right: 1px solid lightgrey;
+}
+.Sentiment_box2{
+    flex: 2;
+}
+.Sentiment_box3{
+    flex: 3;
+}
+
+.Sentiment_Index1{
+    height: 100px;
+    width: 100%;
+    margin-top: 60px;
+    padding-left: 30px;
+}
+.Sentiment_Index1>img{
+    float: left;
+}
+
+.Sentiment_Index1>.slide_box{
+    margin-top: 10px;
+}
+
+.Sentiment_box2>div{
+    width: 100%;
+    height: 70px;
+}
+
+.Sentiment_box2>div>.slide_box{
+    margin-left: 30px;
+}
+
+.border_box{
+    margin-left: 10%;
+    float: left;
+    height: 55px;
+    width: 7px;
+    margin-top: 5px;
+}
+
+
+
+/*Brand_Content*/
+
+#Brand_Content{
+    height: 2050px;
+}
+.Brand_Content_content{
+    height:2000px;
+    padding: 20px;
+}
+
+
+/*Brand_Content   Hot words*/
+#Hot_Words_box{
+    width: 100%;
+    height: 430px;
+}
+
+#Hot_Words_chart_content{
+    width: 100%;
+    height: 380px;
+    padding: 20px;
+}
+
+#Hot_Words_chart_box{
+    width: 72%;
+}
+#Hot_Words_table_box{
+    width: 27%;margin-left: 1%;
+}
+
+
+
+/*Brand_Content   Content Reference*/
+#Content_Reference_box{
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+}
+
+#Content_Reference_chart_content{
+    width: 100%;
+    height: 350px;
+    padding: 20px;
+}
+
+
+#Brand_Reference_table_box{
+    width: 24%;
+}
+
+#Product_Reference_table_box{
+    width: 24%;
+    margin-left: 1%;
+}
+
+#KOL_Reference_table_box{
+    width: 24%;
+    margin-left: 1%;
+}
+
+
+
+#Marketing_Reference_table_box{
+    width: 25%;
+    margin-left: 1%;
+}
+
+/*Brand_Content   Product*/
+#Product_box{
+    width: 100%;
+    height: 600px;
+    margin-top: 20px;
+}
+
+#Product_chart_content{
+    width: 100%;
+    height: 550px;
+    padding: 20px;
+}
+
+#Product_table_box{
+    width: 29%;
+    margin-left: 1%;
+}
+
+#Product_chart_box{
+    width: 70%;
+}
+
+#Product_chart{
+    width: 100%;
+    height: 460px;
+}
+
+
+#Product_Concerns_chart_box{
+    width: 100%;
+    height: 450px;
+    margin-top: 20px;
+}
+
+#Product_Concerns_chart{
+    width: 100%;
+    height: 340px;
+}
