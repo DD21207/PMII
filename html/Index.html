@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="PMI">
+    <meta name="keywords" content="PMII">
     <meta name="author" content="Dand">
-    <title>Brand pulse</title>
+    <title>Brand Pulse</title>
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/css/cloud.css">
     <link rel="stylesheet" href="../lib/css/daterangepicker.css" rel="external nofollow" />
@@ -57,7 +57,7 @@
                             <li><img src="../img/2.png" alt="" height="65%"></li>
                             <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Hi,Dand<b class="caret"></b>
+                            Hi,DEMO1<b class="caret"></b>
                             </a>
                                 <ul class="dropdown-menu" style="margin-left: -20px;margin-top: -1px;">
                                     <li><a href="#">Usercenter</a></li>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="date_box form-group has-feedback">
                             <span class="glyphicon glyphicon-calendar form-control-feedback" style="left: 0"></span>
-                            <input type="text" class="form-control" value="2017-05-01 to 2017-05-31" id="datepicker" style="padding-left: 40px;padding-right: 5px;font-size: 14px;padding-top: 2px;padding-bottom: 2px">
+                            <input type="text" class="form-control" value="2017-10-01 to 2017-10-31" id="datepicker" style="padding-left: 40px;padding-right: 5px;font-size: 14px;padding-top: 2px;padding-bottom: 2px">
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             <p><span>Buzz Trend：</span></p>
                             <p><span>Indicate the trend of brand related content quantity.</span></p>
                         </div>
-                        <button class="btn btn1">Report</button>
+                        <!-- <button class="btn btn1">Report</button> -->
                     </div>
                     <div class="Buzz_Trend_slide">
                         <div class="Buzz_Trend_slide_brand">
@@ -110,8 +110,8 @@
                                     <ul>
                                         <li v-for="item in filteredItems">
                                             <div class="slide_box">
-                                                <p class="slide_box_name">{{item.Name}}</p>
-                                                <p class="slide_box_num">{{item.Value|formatNum}}</p>
+                                                <p class="slide_box_name">{{item.Brand}}</p>
+                                                <p class="slide_box_num">{{item.Buzz|formatNum}}</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -141,7 +141,7 @@
                             <p><span>Media Channel:</span></p>
                             <p><span>Indicate brands related media channel when broadcasting.</span></p>
                         </div>
-                        <button class="btn btn1">Report</button>
+                        <!-- <button class="btn btn1">Report</button> -->
                     </div>
                     <div class="Media_Channel_content">
                         <div id="Media_Channel_chart_box" class="box">
@@ -165,13 +165,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="tableItem in tablesData">
-                                            <td style="width: 15px">{{tableItem.Rank}}</td>
-                                            <td style="width: 82px">{{tableItem.Name}}</td>
-                                            <td style="width: 10px">{{tableItem.Value}}</td>
+                                        <tr v-for="tableItem in ChannelRank">
+                                            <td style="width: 15px">{{tableItem.Number}}</td>
+                                            <td style="width: 82px">{{tableItem.Channel}}</td>
+                                            <td style="width: 10px">{{tableItem.Buzz}}</td>
                                             <td>
                                                 <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
-                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Percent']+'%'}">
                                                     </div>
                                                 </div>
                                             </td>
@@ -194,13 +194,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="tableItem in tablesData">
-                                            <td style="width: 10px">{{tableItem.Rank}}</td>
-                                            <td style="width: 82px">{{tableItem.Name}}</td>
-                                            <td style="width: 10px">{{tableItem.Value}}</td>
+                                        <tr v-for="tableItem in ActiveMedia">
+                                            <td style="width: 10px">{{tableItem.Number}}</td>
+                                            <td style="width: 82px">{{tableItem['Active Media']}}</td>
+                                            <td style="width: 10px">{{tableItem.Buzz}}</td>
                                             <td>
                                                 <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
-                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Percent'] +'%'}">
                                                     </div>
                                                 </div>
                                             </td>
@@ -219,19 +219,16 @@
                             <p><span>Media Channel:</span></p>
                             <p><span>Indicate the sentiment of media when broadcasting brands related <br>content and the sentiment contains positive / Netural / Negative.</span></p>
                         </div>
-                        <button class="btn btn1">Report</button>
+                        <!-- <button class="btn btn1">Report</button> -->
                     </div>
                     <div class="Media_Sentiment_content">
                         <div id="Media_Sentiment_chart_box" class="box">
                             <div class="box_title">
                                 <p style="position: absolute;">Sentiment Index</p>
                                 <div class="select_box">
-                                    <select class="form-control">
-                                        <option>上汽通用</option>
-                                        <option>上汽通用</option>
-                                        <option>上汽通用</option>
-                                        <option>上汽通用</option>
-                                        <option>上汽通用</option>
+                                    <select class="form-control" v-model="Sentiment_Index_List_selected">
+                                        <option v-for="list in Sentiment_Index_List" v-bind:value="list.Brand">{{list.Brand}}</option>
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -240,8 +237,8 @@
                                     <div class="Sentiment_Index1">
                                         <img src="../img/SGM.jpg" alt="" width="50%">
                                         <div class="slide_box" style="width: 100px;">
-                                            <p class="slide_box_name">{{brandName}}</p>
-                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                            <p class="slide_box_name">{{Sentiment_Index_Value.Brand.name}}</p>
+                                            <p class="slide_box_num">{{Sentiment_Index_Value.Brand.value|formatPercent}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -250,24 +247,24 @@
                                         <div class="border_box" style="background-color: #6ab0b8">
                                         </div>
                                         <div class="slide_box" style="width: 100px;">
-                                            <p class="slide_box_name">{{brandName}}</p>
-                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                            <p class="slide_box_name">{{Sentiment_Index_Value.Positive.name}}</p>
+                                            <p class="slide_box_num">{{Sentiment_Index_Value.Positive.value|formatPercent}}</p>
                                         </div>
                                     </div>
                                     <div style="margin-top: 15px;">
                                         <div class="border_box" style="background-color: #2f4554">
                                         </div>
                                         <div class="slide_box" style="width: 100px;">
-                                            <p class="slide_box_name">{{brandName}}</p>
-                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                            <p class="slide_box_name">{{Sentiment_Index_Value.Neutral.name}}</p>
+                                            <p class="slide_box_num">{{Sentiment_Index_Value.Neutral.value|formatPercent}}</p>
                                         </div>
                                     </div>
                                     <div style="margin-top: 15px;">
                                         <div class="border_box" style="background-color: #c23531">
                                         </div>
-                                        <div class="slide_box" style="width: 100px;">
-                                            <p class="slide_box_name">{{brandName}}</p>
-                                            <p class="slide_box_num">{{brandNum|formatNum}}</p>
+                                       <div class="slide_box" style="width: 100px;">
+                                            <p class="slide_box_name">{{Sentiment_Index_Value.Negative.name}}</p>
+                                            <p class="slide_box_num">{{Sentiment_Index_Value.Negative.value|formatPercent}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -289,13 +286,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="tableItem in tablesData">
-                                            <td style="width: 20px">{{tableItem.Rank}}</td>
-                                            <td style="width: 90px">{{tableItem.Name}}</td>
-                                            <td style="width: 20px">{{tableItem.Value}}</td>
+                                        <tr v-for="tableItem in SentimentRank">
+                                            <td style="width: 20px">{{tableItem.Number}}</td>
+                                            <td style="width: 90px">{{tableItem.Brand}}</td>
+                                            <td style="width: 20px">{{tableItem['Sentiment Index']}}</td>
                                             <td>
                                                 <div class="progress" style="background-color: white;border:0;margin-bottom: 4px;height: 15px;margin-top: 2px;">
-                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Value%']}">
+                                                    <div class="progress-bar" role="progressbar" v-bind:style="{width: tableItem['Percent']+'%'}">
                                                     </div>
                                                 </div>
                                             </td>
@@ -337,12 +334,9 @@
                             <button class="btn btn-default">Nagetive</button>
                         </div>
                         <div class="select_box">
-                            <select class="form-control">
-                                <option>上汽通用</option>
-                                <option>上汽通用</option>
-                                <option>上汽通用</option>
-                                <option>上汽通用</option>
-                                <option>上汽通用</option>
+                            <select class="form-control" v-model="Brand_Content_List_selected">
+                                        <option v-for="list in Sentiment_Index_List" v-bind:value="list.Brand">{{list.Brand}}</option>
+                                        
                             </select>
                         </div>
                     </div>

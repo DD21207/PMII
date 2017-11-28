@@ -7,78 +7,38 @@
 var pulse = new Vue({
     el: '#body_div',
     data: {
-        brandName: '上汽通用',
-        brandNum: '1345',
-        items: [{
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'aaa',
-            Value: '1245'
-        }, {
-            Name: 'bbb',
-            Value: '1245'
-        }],
+        brandName: '',
+        brandNum: '',
+        brandItems: [],
         startNum: 0,
         endNum: 5,
-        tablesData: [{
-                Rank: 1,
-                Name: 'Mumbai',
-                Value: 1075,
-                'Value%': '100%'
+        ChannelRank:[],
+        ActiveMedia:[],
+        tablesData:[],
+        Sentiment_Index_brandName:'',
+        Sentiment_Index_brandValue:'',
+        Sentiment_Index_List:[],
+        Sentiment_Index_List_selected:'上汽通用',
+        Brand_Content_List_selected:'上汽通用',
+        Sentiment_Index_Value:{
+            Brand:{
+                value:'',
+                name:''
             },
-            {
-                Rank: 1,
-                Name: 'Mumbai',
-                Value: 1075,
-                'Value%': '100%'
+            Neutral:{
+                value:'',
+                name:''
             },
-            {
-                Rank: 1,
-                Name: 'Mumbai',
-                Value: 1075,
-                'Value%': '100%'
+            Negative:{
+                value:'',
+                name:''
             },
-            {
-                Rank: 1,
-                Name: 'Mumbai',
-                Value: 1075,
-                'Value%': '100%'
-            },
-            {
-                Rank: 1,
-                Name: 'Mumbai',
-                Value: 1075,
-                'Value%': '100%'
+            Positive:{
+                value:'',
+                name:''
             }
-        ],
+        },
+        SentimentRank:[],
         word_array: [
 
             { text: "Lorem", weight: 100 },
@@ -106,11 +66,14 @@ var pulse = new Vue({
             }
             if (num) { result = num + result; }
             return result;
+        },
+        formatPercent: function(value) {
+            return value +'%';
         }
     },
     computed: {
         filteredItems: function() {
-            return this.items.slice(this.startNum, this.endNum)
+            return this.brandItems.slice(this.startNum, this.endNum)
         }
     },
     mounted: function() {
@@ -122,28 +85,73 @@ var pulse = new Vue({
         load: function() {
             var height = $(document).height();
             $('.sidebar').css('height', height)
-            //日期选择框初始化和拿数
-            $('#datepicker').dateRangePicker().bind('datepicker-apply', function(event, obj) {
-                console.log(obj);
-            })
             $('.q-mark').hover(function() {
                 $(this).siblings('.remark').show()
             }, function() {
                 $(this).siblings('.remark').hide()
             })
+            //日期选择框初始化和拿数
+            // $('#datepicker').dateRangePicker().bind('datepicker-apply', function(event, obj) {
+            //     console.log(obj);
+            // })
 
-            line('Buzz_Trend_chart');
-            line('Sentiment_Trend_chart');
-            line('Product_Concerns_chart');
-            radar('Media_Channel_chart');
-            pie('Media_Sentiment_chart');
-            radar('Product_chart');
-            
+            this.$http.get('http://10.143.103.231:8080/PMII/OnloadChartServlet.do').then(function(data) {
+                //Buzz Trend
+                this.brandName = data.body['buzz header2'].BrandName;
+                this.brandNum = data.body['buzz header2'].Brandvalue;
+                this.brandItems = data.body['buzz header2'].OtherValue;
+                line('Buzz_Trend_chart',data.body['BuzzChart'].legend,data.body['BuzzChart'].xAxis,data.body['BuzzChart'].series);
+            	
+                //Media_Channel
+                radar('Media_Channel_chart',data.body['MediaDistributionRadarChart'].legend,data.body['MediaDistributionRadarChart'].max,data.body['MediaDistributionRadarChart'].series);
+            	this.ChannelRank = data.body.ChannelRank;
+            	this.ActiveMedia = data.body.ActiveMedia;
+
+
+                //Media Sentiment
+                // this.Sentiment_Index_brandName = data.body.SentimentIndex.
+                this.Sentiment_Index_List = data.body.SentimentIndex.xLayout;
+
+                this.Sentiment_Index_Value.Brand.name = data.body.SentimentIndex.SentimentIndex.name;
+                this.Sentiment_Index_Value.Brand.value = data.body.SentimentIndex.SentimentIndex.value;
+
+                this.Sentiment_Index_Value.Neutral.name = data.body.SentimentIndex.Neutral.name;
+                this.Sentiment_Index_Value.Neutral.value = data.body.SentimentIndex.Neutral.value;
+
+                this.Sentiment_Index_Value.Negative.name = data.body.SentimentIndex.Negative.name;
+                this.Sentiment_Index_Value.Negative.value = data.body.SentimentIndex.Negative.value;
+
+                this.Sentiment_Index_Value.Positive.name = data.body.SentimentIndex.Positive.name;
+                this.Sentiment_Index_Value.Positive.value = data.body.SentimentIndex.Positive.value;
+                
+                this.SentimentRank = data.body.SentimentRank
+                pie('Media_Sentiment_chart',data.body.SentimentIndex.legend.data,'abc',data.body.SentimentIndex.series);
+
+                line('Sentiment_Trend_chart',data.body.SentimentTrendChart.legend,data.body.SentimentTrendChart.xAxis,data.body.SentimentTrendChart.series);
+
+
+            });
+
+            // $.get('http://10.143.103.231:8080/PMII/OnloadChartServlet.do',function(data){
+            // 	 console.log(data)
+            // })
+
+
+
+
+
+            // line('Buzz_Trend_chart');
+            // line('Sentiment_Trend_chart');
+            // line('Product_Concerns_chart');
+            // radar('Media_Channel_chart');
+            // pie('Media_Sentiment_chart');
+            // radar('Product_chart');
+
             $("#Hot_Words_chart_box").jQCloud(this.word_array);
         },
         nextBuzz: function() {
             $('.Buzz_Trend_slide_per').show();
-            if (this.endNum <= this.items.length - 1) {
+            if (this.endNum <= this.brandItems.length - 1) {
                 this.startNum += 1;
                 this.endNum += 1;
             } else {
@@ -159,8 +167,6 @@ var pulse = new Vue({
                 this.endNum = 5;
                 $('.Buzz_Trend_slide_per').hide();
             }
-            console.log(this.startNum)
-            console.log(this.endNum)
         },
 
     }
